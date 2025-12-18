@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+// 加入房间请求
+message JoinRoom {
+  int32 room_id = 1; // 标记当前逻辑帧（注释建议中文清晰化）
+  string player_name = 2; // 玩家名称
+}
+// 玩家信息
+message PlayerInfo {
+  int32 player_id = 1; // 玩家ID
+  string player_name = 2; // 玩家名称
+  bool is_ready = 3; // 是否准备
+  int32 seat_id = 4;     // 【新增】座位号 (0 或 1) - 用于逻辑区分
+}
+// 房间状态响应
+message RoomState {
+  int32 result = 1; // 结果码（0=成功，非0=失败）
+  int32 room_Id = 2; // 
+  repeated PlayerInfo players = 3; // 房间内所有玩家信息
+  int32 self_id = 4; // 自己的玩家ID
+}
+// 玩家准备状态
+message PlayerReady {
+  bool is_ready = 1; // 是否准备
+}
+message BattleReady {
+  int32 player_id = 1;
+}
+// 游戏开始通知
+message GameStart {
+  int32 random_seed = 1; // 随机种子
+  int32 first_hunter_id = 2; // 首个猎人ID
+  float start_timestamp = 3; // 游戏开始时间戳（修正：补充int64类型，规范命名）
+}

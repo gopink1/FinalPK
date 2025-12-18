@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message TextMsg {
+ 	string query = 1;
+ 	int32 page_number = 2;
+ 	int32 results_per_page = 3;
+ 	EnumText et = 4;
+	TextMsga tm = 5;
+	repeated int32 array0 = 6;
+	map<int32,string> m1 = 7;
+}
+enum EnumText{
+	E_A = 0;
+	E_B = 1;
+	E_C = 2;
+}
+message TextMsga{
+	string text = 1;
+	int32  num= 2;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+enum MoveDir{
+	None = 0;
+	Up = 1;
+	Down = 2;
+	Left = 3;
+	Right = 4;
+}
+message AllInputData {
+	
+	int32 globalFrame = 1;//标记当前逻辑帧
+	map<int32,InputData> allClientInput = 2;
+}
+message InputData {
+  	int32 id = 1;            // 玩家ID
+  	int32 global_frame = 2;  // 帧号
+  	float axis_x = 3;        // 通用轴 X
+  	float axis_y = 4;        // 通用轴 Y
+  	int32 action = 5;        // 通用动作键 (0:无, 1:A技能, 2:B技能...)
+	float speed = 6;      // 可选：如果速度经常变，也可以同步
+}
